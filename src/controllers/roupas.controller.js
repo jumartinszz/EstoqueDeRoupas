@@ -6,25 +6,26 @@ const list = new RoupasList();
 export const getAllRoupas = (req, res) => {
     const { tamanho, tipo, cor } = req.query;
     let roupas = list.getAllRoupas();
-  
-    if(roupas.length == 0){
+
+    if (roupas.length == 0) {
         return res.status(404).send({ message: "Nenhuma roupa encontrada" });
-    }else{
+    } else {
 
-    if (tamanho) {
-        roupas = list.getRoupaPeloTamanho(tamanho);
-    }
-    if (tipo) {
-        roupas = list.getRoupaPeloTipo(tipo);
-    }
-    if (cor) {
-        roupas = list.getRoupaPelaCor(cor);
-    }else{
-        let contador = roupas.length;
+        if (tamanho) {
+            roupas = roupas.filter(roupa => roupa.tamanho === tamanho);
+        }
+        if (tipo) {
+            roupas = roupas.filter(roupa => roupa.tipo === tipo);
+        }
+        if (cor) {
+            roupas = roupas.filter(roupa => roupa.cor === cor);
+        }
+        else {
+            let contador = roupas.length;
 
-    return res.status(200).send({ contador, roupas });
+            return res.status(200).send({ contador, roupas });
+        }
     }
-}
 }
 
 export const getRoupasById = (req, res) => {
@@ -102,7 +103,7 @@ export const updateRoupas = (req, res) => {
         return res.status(201).send({ message: `Roupa atualizada com sucesso`, roupa });
     }
 }
-    
+
 export const deleteRoupas = (req, res) => {
     const { id } = req.params;
     const roupa = list.getRoupasById(id);
