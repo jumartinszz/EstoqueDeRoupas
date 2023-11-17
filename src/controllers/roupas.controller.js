@@ -9,7 +9,7 @@ export const getAllRoupas = (req, res) => {
 
     if (roupas.length == 0) {
         return res.status(404).send({ message: "Nenhuma roupa encontrada" });
-    } else {
+    } else{
 
         if (tamanho) {
             roupas = roupas.filter(roupa => roupa.tamanho === tamanho);
