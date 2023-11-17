@@ -1,7 +1,7 @@
-import {v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 export class Roupas {
-    constructor(nome, tipo, tamanho, cor, imagem, quantidade ){
+    constructor(nome, tipo, tamanho, cor, imagem, quantidade) {
         this.id = uuidv4();
         this.nome = nome;
         this.tipo = tipo;
