@@ -11,8 +11,16 @@ export class RoupasList {
         return this.roupas.find((roupa) => roupa.id == id)
     }
 
-    getRoupaPeloTipo(){
+    getRoupaPeloTipo(tipo){
         return this.roupas.filter((roupa) => roupa.tipo == tipo);
+    }
+
+    getRoupaPeloTamanho(tamanho) {
+        return this.roupas.filter(roupa => roupa.tamanho === tamanho);
+    }
+
+    getRoupaPelaCor(cor) {
+        return this.roupas.filter(roupa => roupa.cor === cor);
     }
 
     createRoupas(roupa) {
